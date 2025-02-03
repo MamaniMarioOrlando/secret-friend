@@ -3,7 +3,7 @@
 let friends = [];
 
 
-let resultado = document.getElementById("resultado");
+let result = document.getElementById("resultado");
 let friend = document.getElementById("amigo");
 let namefriend = document.getElementById("namefriend");
 let listFriends = document.getElementById("listaAmigos")
@@ -11,7 +11,8 @@ let listFriends = document.getElementById("listaAmigos")
 clearTag(friend)
 function addFriend(){
     if(isEqualName(friends,friend)){
-        alert("this name exist!");
+        alert("the entered name already exists");
+        clearTag(friend)
         return;
     }
     if(friend.value == ""){
@@ -19,6 +20,7 @@ function addFriend(){
         return;
     }
     friends.push(friend.value);
+
     showName();
     clearTag(friend);
     
@@ -34,11 +36,9 @@ function showName(){
     listFriends.innerHTML = "";
     for (let i = 0; i < friends.length; i++) {
         let taskLi = document.createElement("li");
-        const element = friends[i];
-        taskLi.textContent= element;
+        taskLi.textContent= friends[i];
         listFriends.appendChild(taskLi);
-
-        }
+    }
 }
 
 function isEqualName(friends,friend){
@@ -48,4 +48,20 @@ function isEqualName(friends,friend){
         }
     }
     return false;
+}
+
+function isEmptyFriendList(friends){
+    return friends.length === 0;
+}
+
+function sortearAmigo(){
+    
+    let randomIndex = Math.floor(Math.random() * friends.length);
+    let liShowFriend = document.createElement("li");
+    if(isEmptyFriendList(friends)){
+        alert("no names on the list");
+        return
+    }   
+        liShowFriend.textContent = friends[randomIndex];
+        result.appendChild(liShowFriend);
 }
