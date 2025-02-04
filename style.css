@@ -123,6 +123,7 @@ button {
 
 .button-add:hover {
     background-color: #a1a1a1;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
 }
 
 /* Listas */
@@ -159,4 +160,34 @@ ul {
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.button-add, .button-draw{
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/* Estilos para el input */
+.input-name {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-name:focus {
+    border-color: var(--color-button); /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(201, 99, 26, 0.6); /* Agrega una sombra al enfocar */
+}
+
+/* Animación al agregar un nombre */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.name-list li {
+    animation: fadeIn 0.5s ease;
 }
